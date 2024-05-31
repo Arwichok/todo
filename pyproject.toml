@@ -5,7 +5,11 @@ description = "Default template for PDM package"
 authors = [
     {name = "Arwichok", email = "arwichok@gmail.com"},
 ]
-dependencies = []
+dependencies = [
+    "litestar[jinja,sqlalchemy,standard]>=2.8.3",
+    "alembic>=1.13.1",
+    "advanced-alchemy>=0.8.4",
+]
 requires-python = "==3.11.*"
 readme = "README.md"
 license = {text = "MIT"}
