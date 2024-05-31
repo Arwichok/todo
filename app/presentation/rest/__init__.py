@@ -1,6 +1,6 @@
 from litestar import Router
 
-from .todo import TodoController
+from .todos import TodoController
 
 
 router = Router(
