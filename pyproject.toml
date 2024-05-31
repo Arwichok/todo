@@ -21,3 +21,4 @@ distribution = false
 [tool.pdm.scripts]
 start = "litestar run"
 dev = "litestar run -rd"
+post_install = "pdm export -o requirements.txt --without-hashes"
