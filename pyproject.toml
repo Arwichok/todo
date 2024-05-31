@@ -17,3 +17,7 @@ license = {text = "MIT"}
 
 [tool.pdm]
 distribution = false
+
+[tool.pdm.scripts]
+start = "litestar run"
+dev = "litestar run -rd"
