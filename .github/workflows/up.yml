@@ -13,4 +13,4 @@ jobs:
     steps:
       - name: Connect and pull
         run: |
-          echo "{{ secrets.SSH_PRIVATE_KEY }}" | ssh -i /dev/stdin {{ secrets.SSH_USER }}@{{ secrets.SSH_HOST }} "cd {{ secrets.WORK_DIR }} && git chekout main && git pull"
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" | ssh -i /dev/stdin ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd {{ secrets.WORK_DIR }} && git chekout main && git pull"
