@@ -11,6 +11,14 @@ jobs:
     name: Run Pull
     runs-on: ubuntu-latest
     steps:
-      - name: Connect and pull
+      - name: Install ssh keys
         run: |
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" | ssh -q -i /dev/stdin ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }} && git chekout main && git pull"
+          install -m 600 -D /dev/null ~/.ssh/id_rsa
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
+      - name: Pull
+        run: |
+          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }} && git chekout main && git pull"
+      - name: Cleanup
+        run: |
+          rm -rf ~/.ssh
