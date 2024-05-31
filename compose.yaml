@@ -47,3 +47,7 @@ services:
 #   db-password:
 #     file: db/password.txt
 
+networks:
+  default:
+    external: true
+    name: npm
