@@ -1,0 +1,15 @@
+[project]
+name = "todo"
+version = "0.0.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "Arwichok", email = "arwichok@gmail.com"},
+]
+dependencies = []
+requires-python = "==3.11.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false
