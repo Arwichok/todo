@@ -6,11 +6,11 @@ from litestar.types import ControllerRouterHandler
 
 def create(
         *,
-        handlers: Sequence[ControllerRouterHandler] | None = None,
+        route_handlers: Sequence[ControllerRouterHandler] | None = None,
         **kwargs,
 ) -> Litestar:
 
     return Litestar(
-        route_handlers=handlers or [],
+        route_handlers=route_handlers or [],
         **kwargs
     )
