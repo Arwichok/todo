@@ -1,0 +1,5 @@
+@base=http://localhost:8000/api
+
+### Get todos
+
+GET {{base}}/todos
