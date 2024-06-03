@@ -49,4 +49,4 @@ EXPOSE 8000
 
 ENV LITESTAR_HOST=0.0.0.0
 # Run the application.
-CMD litestar run --
+CMD litestar run
