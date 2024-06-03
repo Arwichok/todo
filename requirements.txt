@@ -2,6 +2,7 @@
 # Please do not edit it manually.
 
 advanced-alchemy==0.8.4
+aiosqlite==0.20.0
 alembic==1.13.1
 anyio==4.4.0
 certifi==2024.2.2
