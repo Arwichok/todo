@@ -22,3 +22,4 @@ distribution = false
 start = "litestar run"
 dev = "litestar run -rd"
 post_install = "pdm export -o requirements.txt --without-hashes"
+act = "act"
