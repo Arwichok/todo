@@ -1,0 +1,32 @@
+{% extends "base.html.j2" %}
+{% block title %}Todos{% endblock %}
+{% block body %}
+<main>
+    <section>
+        <table>
+            <thead>
+                <tr>
+                    <td>
+                        Title
+                    </td>
+                    <td>
+                        Completed
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+            {% for todo in todos %}
+                <tr>
+                    <td>
+                        <a href="todos/{{ todo.id }}">{{ todo.name }}</a>
+                    </td>
+                    <td>
+                        {{ '✓' if todo.done else '✗' }}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+</main>
+{% endblock %}

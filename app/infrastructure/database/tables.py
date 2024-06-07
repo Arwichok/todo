@@ -1,6 +1,5 @@
 from advanced_alchemy.base import orm_registry, UUIDAuditBase
-from sqlalchemy.orm import Mapped, mapped_column, MappedAsDataclass
-# from litestar.contrib.sqlalchemy.base import UUIDAuditBase
+from sqlalchemy.orm import Mapped, mapped_column
 
 
 class Todo(UUIDAuditBase):

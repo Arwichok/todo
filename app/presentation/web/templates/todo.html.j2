@@ -1,0 +1,13 @@
+{% extends "base.html.j2" %}
+
+{% block title %}{{ todo.name }}{% endblock %}
+
+{% block body %}
+<main>
+    <section>
+        <h1>{{ todo.name }}</h1>
+        <hr>
+        <h3>{{ '✓' if todo.done else '✗' }}</h3>
+    </section>
+</main> 
+{% endblock %}

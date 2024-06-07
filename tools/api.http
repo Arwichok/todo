@@ -3,3 +3,30 @@
 ### Get todos
 
 GET {{base}}/todos
+
+### Create todo
+
+POST {{base}}/todos
+Content-Type: application/json
+
+{
+    "name": "Arwi",
+    "done": false
+}
+### Put changes
+PATCH {{base}}/todos/8e504b80-e60a-4f0a-9987-214e00907ba0
+Content-Type: application/json
+
+{
+    "done": false,
+    "name": "new name"
+}
+### Put changes 2
+PATCH {{base}}/todos/
+Content-Type: application/json
+
+{
+    "id": "8e504b80-e60a-4f0a-9987-214e00907ba0",
+    "done": true,
+    "name": "some name"
+}
