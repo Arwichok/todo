@@ -8,9 +8,14 @@
 # database or a cache. For examples, see the Awesome Compose repository:
 # https://github.com/docker/awesome-compose
 services:
-  todo:
-    build:
-      context: .
+  migrations:
+    image: ${DOCKER_IMAGE}
+    command: alembic upgrade head
+    volumes:
+      - "./db.sqlite3:/db.sqlite3"
+
+  app:
+    image: ${DOCKER_IMAGE}
     ports:
       - 8000:8000
 

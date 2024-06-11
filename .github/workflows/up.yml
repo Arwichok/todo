@@ -18,7 +18,12 @@ jobs:
           ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
       - name: Pull
         run: |
-          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }} && git checkout main && git pull && docker compose up -d --build"
+          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "\
+            cd ${{ secrets.WORK_DIR }} &&\
+            git checkout main && \
+            git pull && \
+            docker build -t ${{ secrets.DOCKER_IMAGE }} . && \
+            docker compose up -d"
       - name: Cleanup
         run: |
           rm -rf ~/.ssh
