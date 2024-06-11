@@ -18,6 +18,12 @@ services:
     image: ${DOCKER_IMAGE}
     ports:
       - 8000:8000
+    volumes_from:
+      - migrations
+    depends_on:
+      - migrations
+
+    
 
 # The commented out section below is an example of how to define a PostgreSQL
 # database that your application can use. `depends_on` tells Docker Compose to

@@ -1,0 +1,39 @@
+{% extends "base.html.j2" %}
+{% block title %}Todos{% endblock %}
+{% block body %}
+<main>
+    <section>
+        <table>
+            <thead>
+                <tr>
+                    <td>
+                        Title
+                    </td>
+                    <td>
+                        Completed
+                    </td>
+                    <td>
+                        Actions
+                    </td>
+                </tr>
+            </thead>
+            <tbody hx-target="closest tr" hx-swap="outerHTML" >
+            {% for todo in todos %}
+                {% include "todo.html.j2" %}
+            {% endfor %}
+            <tr><form hx-post="/todos" hx-on::after-request="this.reset()" hx-swap="beforebegin">
+                <td>
+                    <input type="text" name="name" id="name">
+                </td>
+                <td>
+                    <input type="checkbox" name="done" id="done">
+                </td>
+                <td>
+                    <button>Add</button>
+                </td>
+            </form></tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+{% endblock %}

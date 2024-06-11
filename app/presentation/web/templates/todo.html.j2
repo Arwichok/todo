@@ -1,0 +1,25 @@
+<tr>
+    <td>
+        <input 
+            type="text" 
+            name="name" 
+            value="{{ todo.name }}"
+            hx-patch="/todos/{{ todo.id }}"
+            hx-trigger="input changed delay:500ms"
+        />
+    </td>
+    <td>
+       <input 
+            type="checkbox" 
+            name="done" 
+            {% if todo.done %}checked{% endif %}
+            hx-patch="/todos/{{ todo.id }}"
+        />
+    </td>
+    <td>
+        <button 
+            hx-delete="/todos/{{ todo.id }}"
+            hx-swap="delete" 
+        >✗</button>
+    </td>
+</tr>
