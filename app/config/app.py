@@ -3,6 +3,7 @@ from pathlib import Path
 from litestar.contrib.jinja import JinjaTemplateEngine
 # from litestar.contrib.sqlalchemy.plugins import SQLAlchemyAsyncConfig
 from litestar.template.config import TemplateConfig
+from litestar.config.compression import CompressionConfig
 from advanced_alchemy.extensions.litestar import (
     AsyncSessionConfig,
     SQLAlchemyAsyncConfig,
@@ -23,3 +24,4 @@ template = TemplateConfig(
     engine=JinjaTemplateEngine,
     directory=TEMPLATES_PATH,
 )
+compression = CompressionConfig(backend="gzip", gzip_compress_level=9)

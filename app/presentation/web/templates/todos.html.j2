@@ -12,19 +12,26 @@
                     <td>
                         Completed
                     </td>
+                    <td>
+                        Actions
+                    </td>
                 </tr>
             </thead>
-            <tbody>
+            <tbody hx-target="closest tr" hx-swap="outerHTML" >
             {% for todo in todos %}
-                <tr>
-                    <td>
-                        <a href="todos/{{ todo.id }}">{{ todo.name }}</a>
-                    </td>
-                    <td>
-                        {{ '✓' if todo.done else '✗' }}
-                    </td>
-                </tr>
+                {% include "todo.html.j2" %}
             {% endfor %}
+            <tr><form hx-post="/todos" hx-on::after-request="this.reset()" hx-swap="beforebegin">
+                <td>
+                    <input type="text" name="name" id="name">
+                </td>
+                <td>
+                    <input type="checkbox" name="done" id="done">
+                </td>
+                <td>
+                    <button>Add</button>
+                </td>
+            </form></tr>
             </tbody>
         </table>
     </section>

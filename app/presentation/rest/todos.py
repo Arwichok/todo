@@ -1,9 +1,9 @@
-from litestar import Controller, get, post, put, patch
+from litestar import Controller, get, post, patch
 from litestar.di import Provide
 from app.infrastructure.database.tables import Todo
 from app.domain.todos import (
-    ChangeTodoDTO,
-    CreateTodoDTO,
+    UpdateTodo,
+    CreateTodo,
     TodoRepository,
     TodoService,
 )
@@ -20,7 +20,7 @@ class TodoController(Controller):
     async def get_todos(self, repo: TodoRepository) -> list[Todo]:
         return await repo.list()
 
-    @post("/", dto=CreateTodoDTO)
+    @post("/", dto=CreateTodo)
     async def create_todo(self, data: Todo, repo: TodoRepository) -> Todo:
         return await repo.add(data)
 
@@ -33,7 +33,7 @@ class TodoController(Controller):
     ) -> Todo:
         return await service.update(data, id)
 
-    @patch("/", dto=ChangeTodoDTO)
+    @patch("/", dto=UpdateTodo)
     async def update_todo_(
         self,
         data: Todo,

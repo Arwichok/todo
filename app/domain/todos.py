@@ -1,24 +1,29 @@
-from dataclasses import dataclass
-from uuid import UUID
-from app.infrastructure.database.tables import Todo
+from typing import Annotated
+
 from litestar.contrib.sqlalchemy.dto import SQLAlchemyDTO
+from litestar.dto import DTOConfig
+
 from app.infrastructure.database.repo import BaseRepository
 from app.infrastructure.database.service import BaseService
-from litestar.dto import DTOConfig
-from typing import Annotated
-from msgspec import Struct, convert
-from litestar.dto import DTOConfig, MsgspecDTO, DataclassDTO
+from app.infrastructure.database.tables import Todo
 
-from advanced_alchemy.service import SQLAlchemyAsyncRepositoryService
+CreateTodo = SQLAlchemyDTO[
+    Annotated[
+        Todo,
+        DTOConfig(
+            exclude={"created_at", "updated_at", "id"},
+        ),
+    ]
+]
 
-
-CreateTodoDTO = SQLAlchemyDTO[Annotated[Todo, DTOConfig(
-    exclude={"created_at", "updated_at", "id"},
-)]]
-
-ChangeTodoDTO = SQLAlchemyDTO[Annotated[Todo, DTOConfig(
-    exclude={"created_at", "updated_at"},
-)]]
+UpdateTodo = SQLAlchemyDTO[
+    Annotated[
+        Todo,
+        DTOConfig(
+            exclude={"created_at", "updated_at"},
+        ),
+    ]
+]
 
 
 class TodoRepository(BaseRepository[Todo]):

@@ -5,6 +5,8 @@ ENV PYTHONUNBUFFERED=1 \
     VIRTUAL_ENV=/opt/venv \
     PATH="/opt/venv/bin:$PATH"
 
+WORKDIR /app
+
 ARG UID=10001
 RUN adduser \
     --disabled-password \
@@ -15,7 +17,9 @@ RUN adduser \
     --uid "${UID}" \
     appuser
 
-RUN apk add --no-cache python3
+RUN apk update && \
+    apk upgrade && \
+    apk add --no-cache python3
 
 FROM base as builder
 

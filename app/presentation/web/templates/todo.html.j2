@@ -1,13 +1,25 @@
-{% extends "base.html.j2" %}
-
-{% block title %}{{ todo.name }}{% endblock %}
-
-{% block body %}
-<main>
-    <section>
-        <h1>{{ todo.name }}</h1>
-        <hr>
-        <h3>{{ '✓' if todo.done else '✗' }}</h3>
-    </section>
-</main> 
-{% endblock %}
+<tr>
+    <td>
+        <input 
+            type="text" 
+            name="name" 
+            value="{{ todo.name }}"
+            hx-patch="/todos/{{ todo.id }}"
+            hx-trigger="input changed delay:500ms"
+        />
+    </td>
+    <td>
+       <input 
+            type="checkbox" 
+            name="done" 
+            {% if todo.done %}checked{% endif %}
+            hx-patch="/todos/{{ todo.id }}"
+        />
+    </td>
+    <td>
+        <button 
+            hx-delete="/todos/{{ todo.id }}"
+            hx-swap="delete" 
+        >✗</button>
+    </td>
+</tr>
