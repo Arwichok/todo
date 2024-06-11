@@ -9,13 +9,13 @@
 # https://github.com/docker/awesome-compose
 services:
   migrations:
-    image: todo:latest
+    image: ${DOCKER_IMAGE}
     command: alembic upgrade head
     volumes:
       - "./db.sqlite3:/db.sqlite3"
 
   app:
-    image: todo:latest
+    image: ${DOCKER_IMAGE}
     ports:
       - 8000:8000
     volumes_from:
