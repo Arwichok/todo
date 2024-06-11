@@ -1,5 +1,5 @@
 from advanced_alchemy.repository import SQLAlchemyAsyncRepository
-from typing import Any, Generic, Type, TypeVar, Self
+from typing import Generic, Type, TypeVar, Self
 from sqlalchemy.ext.asyncio import AsyncSession
 
 M = TypeVar("M")

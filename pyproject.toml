@@ -22,8 +22,9 @@ license = {text = "MIT"}
 distribution = false
 
 [tool.pdm.scripts]
-_.env = {LITESTAR_APP="app.asgi:app"}
+_.env = {LITESTAR_APP="app.asgi:app",DOCKER_IMAGE="todo:latest"}
 start = "litestar run"
 dev = "litestar run -rd"
 post_install = "pdm export -o requirements.txt --without-hashes"
 act = "act"
+build = "docker build -t ${DOCKER_IMAGE} ."
