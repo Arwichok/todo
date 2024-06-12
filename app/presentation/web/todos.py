@@ -62,14 +62,9 @@ class WebTodoController(Controller):
         service: TodoService,
     ) -> Template:
         if name := data.get("name"):
-            todo = dict(
-                name=name,
-            )
+            todo = dict(name=name)
         else:
-            todo = dict(
-                done='done' in data
-            )
-        print(todo)
+            todo = dict(done='done' in data)
         return HTMXTemplate(
             template_name="todo.html.j2",
             context=dict(todo=await service.update(todo, id)),
