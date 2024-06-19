@@ -7,16 +7,6 @@ ENV PYTHONUNBUFFERED=1 \
 
 WORKDIR /app
 
-ARG UID=10001
-RUN adduser \
-    --disabled-password \
-    --gecos "" \
-    --home "/nonexistent" \
-    --shell "/sbin/nologin" \
-    --no-create-home \
-    --uid "${UID}" \
-    appuser
-
 RUN apk update && \
     apk upgrade && \
     apk add --no-cache python3
@@ -33,6 +23,16 @@ RUN /root/.cargo/bin/uv venv /opt/venv && \
 FROM base as app
 
 COPY --from=builder /opt/venv /opt/venv
+
+ARG UID=10001
+RUN adduser \
+    --disabled-password \
+    --gecos "" \
+    --home "/nonexistent" \
+    --shell "/sbin/nologin" \
+    --no-create-home \
+    --uid "${UID}" \
+    appuser
 
 USER appuser
 COPY . .
