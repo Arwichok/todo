@@ -1,23 +1,13 @@
 services:
-  # migration:
-  #   image: ${DOCKER_IMAGE}
-  #   command: alembic upgrade head
-  #   env_file:
-  #     - .env
-  #   depends_on:
-  #     db:
-  #       condition: service_healthy
-
   app:
-    image: ${DOCKER_IMAGE}
+    image: todo:latest
     ports:
       - 8000:8000
-    # depends_on:
-    #   - migration
-    # volumes_from:
-    #   - migrations
     env_file:
-      - .env
+      - path: .env
+        required: false
+    volumes:
+      - ./data:/app/data
     
 #   db:
 #     image: postgres
@@ -34,8 +24,6 @@ services:
 #       timeout: 5s
 #       retries: 5
 
-# volumes:
-#   db-data:
 
 networks:
   default:
