@@ -24,17 +24,6 @@ FROM base as app
 
 COPY --from=builder /opt/venv /opt/venv
 
-ARG UID=10001
-RUN adduser \
-    --disabled-password \
-    --gecos "" \
-    --home "/nonexistent" \
-    --shell "/sbin/nologin" \
-    --no-create-home \
-    --uid "${UID}" \
-    appuser
-
-USER appuser
 COPY . .
 
 EXPOSE 8000
