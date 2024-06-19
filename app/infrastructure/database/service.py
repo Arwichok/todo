@@ -1,4 +1,4 @@
-from typing import Any, Generic, Self
+from typing import Generic, Self
 
 from advanced_alchemy import SQLAlchemyAsyncRepositoryService
 from sqlalchemy.ext.asyncio import AsyncSession

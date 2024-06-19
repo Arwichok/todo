@@ -10,7 +10,9 @@ env = Env()
 @dataclass
 class DatabaseSettings:
     url: str = field(
-        default_factory=lambda: env("DATABASE_URL", "sqlite+aiosqlite:///data/db.sqlite3")
+        default_factory=lambda: env(
+            "DATABASE_URL", "sqlite+aiosqlite:///data/db.sqlite3"
+        )
     )
 
 

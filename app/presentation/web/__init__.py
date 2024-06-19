@@ -3,6 +3,7 @@ from litestar.response import Redirect
 
 from .todos import WebTodoController
 
+
 @get("/")
 async def redirect() -> Redirect:
     return Redirect("/todos")

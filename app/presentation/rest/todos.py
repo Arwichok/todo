@@ -1,13 +1,16 @@
-from litestar import Controller, get, post, patch
+from uuid import UUID
+
+from litestar import Controller, get, patch, post
 from litestar.di import Provide
-from app.infrastructure.database.tables import Todo
+
 from app.domain.todos import (
-    UpdateTodo,
     CreateTodo,
     TodoRepository,
     TodoService,
+    UpdateTodo,
 )
-from uuid import UUID
+from app.infrastructure.database.tables import Todo
+
 
 class TodoController(Controller):
     path = "/todos"

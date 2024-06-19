@@ -7,8 +7,7 @@ M = TypeVar("M")
 
 class BaseRepository(SQLAlchemyAsyncRepository, Generic[M]):
     model_type: Type[M]
-    
+
     @classmethod
     async def provide(cls, db_session: AsyncSession) -> Self:
         return cls(session=db_session)
-    

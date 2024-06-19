@@ -24,11 +24,7 @@ class WebTodoController(Controller):
     )
 
     @get("/")
-    async def get_todos(
-        self,
-        request: HTMXRequest,
-        repo: TodoRepository
-    ) -> Template:
+    async def get_todos(self, request: HTMXRequest, repo: TodoRepository) -> Template:
         return Template("todos.html.j2", context=dict(todos=await repo.list()))
 
     @delete("/{id:uuid}", status_code=status_codes.HTTP_202_ACCEPTED)
@@ -44,16 +40,13 @@ class WebTodoController(Controller):
         data: EncodedDict,
     ) -> Template:
         if name := data.get("name"):
-            todo = Todo(
-                name=name,
-                done='done' in data
-            )
+            todo = Todo(name=name, done="done" in data)
             return HTMXTemplate(
-                template_str="{% include 'todo.html.j2' %}", 
-                context=dict(todo=await service.create(todo))
+                template_str="{% include 'todo.html.j2' %}",
+                context=dict(todo=await service.create(todo)),
             )
         return ""
-    
+
     @patch("/{id:uuid}")
     async def update_todo(
         self,
@@ -64,7 +57,7 @@ class WebTodoController(Controller):
         if name := data.get("name"):
             todo = dict(name=name)
         else:
-            todo = dict(done='done' in data)
+            todo = dict(done="done" in data)
         return HTMXTemplate(
             template_name="todo.html.j2",
             context=dict(todo=await service.update(todo, id)),
