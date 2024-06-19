@@ -28,4 +28,4 @@ COPY . .
 
 EXPOSE 8000
 
-CMD litestar run
+CMD ["litestar", "run"]
