@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 67c6a5f11a3f
+Revision ID: cc14839cb62f
 Revises: 
-Create Date: 2024-06-20 08:00:11.661344
+Create Date: 2024-06-20 08:26:02.640695
 
 """
 from typing import Sequence, Union
@@ -13,7 +13,7 @@ import advanced_alchemy
 
 
 # revision identifiers, used by Alembic.
-revision: str = '67c6a5f11a3f'
+revision: str = 'cc14839cb62f'
 down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None

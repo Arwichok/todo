@@ -1,20 +1,19 @@
 @base=http://localhost:8000/api
-
+@todo_id=
+@user_id=de9ef919-5157-43c5-8179-1cdf80cfe462
 ### Get todos
-
 GET {{base}}/todos
-
 ### Create todo
-
 POST {{base}}/todos
 Content-Type: application/json
 
 {
     "name": "Heloo",
-    "done": false
+    "done": false,
+    "user_id": "{{user_id}}"
 }
 ### Put changes
-PATCH {{base}}/todos/8e504b80-e60a-4f0a-9987-214e00907ba0
+PATCH {{base}}/todos/{{todo_id}}
 Content-Type: application/json
 
 {
@@ -26,7 +25,16 @@ PATCH {{base}}/todos/
 Content-Type: application/json
 
 {
-    "id": "8e504b80-e60a-4f0a-9987-214e00907ba0",
+    "id": "{{todo_id}}",
     "done": true,
     "name": "some name"
+}
+### Users
+GET {{base}}/users/
+### Create user
+POST {{base}}/users/
+Content-Type: application/json
+
+{
+    "name": "Arwi"
 }

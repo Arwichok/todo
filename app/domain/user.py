@@ -5,30 +5,30 @@ from litestar.dto import DTOConfig
 
 from app.infrastructure.database.repo import BaseRepository
 from app.infrastructure.database.service import BaseService
-from app.infrastructure.database.tables import Todo
+from app.infrastructure.database.tables import User
 
-CreateTodo = SQLAlchemyDTO[
+
+CreateUser = SQLAlchemyDTO[
     Annotated[
-        Todo,
+        User,
         DTOConfig(
-            exclude={"created_at", "updated_at", "id", "user"},
+            exclude={"created_at", "updated_at", "id", "todo"},
         ),
     ]
 ]
 
-UpdateTodo = SQLAlchemyDTO[
+UpdateUser = SQLAlchemyDTO[
     Annotated[
-        Todo,
+        User,
         DTOConfig(
             exclude={"created_at", "updated_at"},
         ),
     ]
 ]
 
+class UserRepository(BaseRepository[User]):
+    model_type = User
 
-class TodoRepository(BaseRepository[Todo]):
-    model_type = Todo
 
-
-class TodoService(BaseService[Todo]):
-    repository_type = TodoRepository
+class UserService(BaseService[User]):
+    repository_type = UserRepository
